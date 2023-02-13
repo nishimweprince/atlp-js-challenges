@@ -56,3 +56,37 @@ console.log(inplaceReverse(numbersInplace));
 // 4. NESTED OBJECT OF TWO ARRAYS
 
 let sample = ["Patrick wyne, 30, male", "lil wyne, 32, male","Eric mimi, 21, female","Dodos deck, 21,male","Alian Dwine, 22, male","Patrick wyne, 33, male","Patrick wyne, 10,male","Patrick wyne, 40,male"];
+
+let nestedObj = (arr) => {
+
+    let males = [], females = [], nestedObj = {};
+
+    arr.forEach((element) => {
+        let tempArr = element.split(",");
+        let name = tempArr[0].split(' ');
+        let obj = {};
+        obj.second_name = name[1];
+        obj.age = tempArr[1];
+        if (tempArr[2].trim() == 'male'){
+            let str = '';
+            for (let [key, value] of Object.entries(obj)){
+                str += `${key}: ${value}, `;
+            }
+            males.push(`${name[0]}: {${str.trim()})}`);
+        }
+        else if (tempArr[2].trim() == 'female') {
+            let str = '';
+            for (let [key, value] of Object.entries(obj)){
+                str += `${key}: ${value}, `;
+            }
+            females.push(`${name[0]}: {${str.trim()}}`);
+        }
+    });
+
+    nestedObj.females = females;
+    nestedObj.males = males;
+
+    return nestedObj;
+}
+
+console.log(nestedObj(sample));

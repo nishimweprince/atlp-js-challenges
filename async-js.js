@@ -14,7 +14,7 @@ let families = [
       setTimeout(() => {
         for (let i = 0; i < families.length; i++) {
           if (families[i].childrenNumber < 0) {
-            console.log("Skipping family with negative number of children.");
+            console.log("Skipping family with negative children numbers");
             continue;
           }
   
